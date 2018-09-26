@@ -1,6 +1,7 @@
 package com.bonaparte.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bonaparte.bean.JsSdk;
 import com.bonaparte.service.TokenService;
 import com.bonaparte.util.CookieUtil;
 import org.slf4j.Logger;
@@ -62,5 +63,8 @@ public class AuthController {
         return "redirect:"+url;
     }
 
-
+    public Object jsTicket(String url) {
+        JsSdk jsSdk = tokenService.getSign(url);
+        return jsSdk;
+    }
 }

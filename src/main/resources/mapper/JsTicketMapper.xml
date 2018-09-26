@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bonaparte.dao.mapper.JsTicketMapper" >
+  <resultMap id="BaseResultMap" type="com.bonaparte.entity.JsTicket" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="app_name" property="appName" jdbcType="VARCHAR" />
+    <result column="jsapi_ticket" property="jsapiTicket" jdbcType="VARCHAR" />
+    <result column="expired_time" property="expiredTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="getValid" resultMap="BaseResultMap">
+    select * from jsapi_ticket where app_name=#{appName} and expired_time>NOW()
+  </select>
+</mapper>
